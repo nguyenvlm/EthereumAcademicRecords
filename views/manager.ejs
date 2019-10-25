@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="/image/x-icon">
+    <script src="/javascripts/jquery.min.js"></script>
+</head>
+<body>
+    <div class="main-wrapper">
+        <header><%= title %></header>
+        <nav>
+            <ul>
+                <li><a href="?page=home">Home</a></li>
+                <li><a href="?page=manager">Manager</a></li>
+                <li><a href="?page=student">Student</a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <section>
+                    <form id="regForm" action="">
+
+                        <h1 style="text-align: center;">Manager Form</h1>
+                        
+                        <!-- One "tab" for each step in the form: -->
+                        <div class="tab">
+                            <h4>Register new student:</h4>
+                            <br>
+                            <p><input id="SID" placeholder="Student ID..." oninput="this.className = ''"></p>
+                            <p><input id="fullname" placeholder="Fullname..." oninput="this.className = ''"></p>
+                            <br>
+                            <p style="width: 30%; margin: auto"><input type="button" value="Update" onclick="
+                                event.preventDefault();
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/registerstudent',
+                                    data: {'id': $('#SID').val(), 'fullname': $('#fullname').val()},
+                                    success: function(res) {
+                                        alert(res);
+                                    },
+                                    dataType: 'string'
+                                });
+                            "></p>
+                        </div>
+                        
+                        <div class="tab">
+                            <h4>Add new subject</h2>
+                            <br>
+                            <p><input id="newsubjectname" placeholder="Subject name..." oninput="this.className = ''"></p>
+                            <br>
+                            <p style="width: 30%; margin: auto"><input type="button" value="Update" ></p>
+                        </div>
+                        
+                        <div class="tab">
+                            <h4>Remove old subject:</h4>
+                            <br>
+                            <p><input id="oldsubjectname" placeholder="Subject name..." oninput="this.className = ''"></p>
+                            <br>
+                            <p style="width: 30%; margin: auto"><input type="button" value="Update" ></p>
+                        </div>
+                        
+                        <div class="tab">
+                            <h4>Update student grade:</h4>
+                            <br>
+                            <p><input placeholder="Student ID..." oninput="this.className = ''"></p>
+                            <p><input placeholder="Subject name..." oninput="this.className = ''"></p>
+                            <p><input placeholder="New grade..." oninput="this.className = ''"></p>
+                            <br>
+                            <p style="width: 30%; margin: auto"><input type="button" value="Update" ></p>
+                        </div>
+
+                        <div class="tab">
+                            <h4>Update student graduation status:</h4>
+                            <br>
+                            <p><input placeholder="Student ID..." oninput="this.className = ''"></p>
+                            <br>
+                            <p>
+                                <label for="">Graduated?</label>
+                                <select name="" id="graduated">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </p>
+                            <br>
+                            <p style="width: 30%; margin: auto"><input type="button" value="Update" ></p>
+                        </div>
+                        
+                        <!-- Circles which indicates the steps of the form: -->
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step" onclick="showTab(0)"></span>
+                            <span class="step" onclick="showTab(1)"></span>
+                            <span class="step" onclick="showTab(2)"></span>
+                            <span class="step" onclick="showTab(3)"></span>
+                            <span class="step" onclick="showTab(4)"></span>
+                        </div>
+                            
+                    </form>
+            </section>
+        </div>
+        <footer>
+            <p>Copyright &copy;<span style="color: rgb(29, 12, 70);">nguyenvlm</span>. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+<script src="/javascripts/form.js"></script>
+</html>

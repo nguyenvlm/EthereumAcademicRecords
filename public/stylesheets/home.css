@@ -1,0 +1,188 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: url("../images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -1000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.main-wrapper {
+    width: 70%;
+    margin: 0 auto;
+}
+header {
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    height: fit-content;
+    z-index: 0;
+    margin: 20px;
+    padding: 50px;
+    color: rgb(68, 47, 126);
+    text-align: center;
+    font-size: 350%;
+    font-weight: bold;
+}
+nav {
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0;
+    margin: 20px;
+    height: fit-content;
+    z-index: 1000;
+    color: rgb(68, 47, 126);
+    text-align: center;
+    font-size: 100%;
+    font-weight: bold;
+}
+nav ul {
+    list-style-type: none;
+    margin: 50;
+    padding: 0;
+    overflow: hidden;
+}
+nav li {
+    float: left;
+    padding: 0px;
+}
+nav a {
+    display: block;
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: black;
+    font-size: 120%;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+nav a:hover {
+    background-color: #333333;
+    color: white;
+    
+}
+
+.main-content {
+    position: relative;
+    height: fit-content;
+}
+
+.main-content .fake-image {
+    height: 200px;
+    width: 200px;
+    background-color: #333333;
+    float: left;
+    margin-right: 20px;
+}
+
+section {
+    margin: 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+section div {
+    padding: 25px;
+    text-align: justify;
+    overflow: auto;
+}
+
+section div a {
+    color: orangered;
+    bottom: 0;
+    margin: 5px;
+    clear: both;
+}
+
+aside {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    top: 0;
+    right: 20px;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    text-align: justify;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+aside li {
+    padding: 5px;
+}
+
+aside a {
+    color: orangered;
+    text-decoration: none;
+}
+aside h2 {
+    padding-top: 20px;
+}
+
+footer {
+    padding: 20px;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    clear: both;
+}
+
+/* Style the form */
+#regForm {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
+  
+  /* Style the input fields */
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  /* Mark the active step: */
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #4CAF50;
+  }

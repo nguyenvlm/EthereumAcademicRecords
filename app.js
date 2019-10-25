@@ -1,14 +1,37 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var bodyParser = require("body-parser");
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
+var web3 = require('web3');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// load app config
+var fs = require('fs')
+var appconfig = JSON.parse(fs.readFileSync('appconfig.json'));
+
+// Web3
+var contractabi = JSON.parse(fs.readFileSync('contractabi.json'));
+console.log(web3);
+// var contract = new web3.eth.Contract(contractabi, appconfig['contract_address']);
+
+// app.post('/registerstudent',function(req, res){
+//   var id = req.body.id;
+//   var fullname = req.body.fullname;
+//   contract.methods.registerStudent(id, fullname).send({from: appconfig['manager_address']}).on('error', function(error){
+//     res.end(error);
+//   });
+//   res.end("Done!");
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
