@@ -5,7 +5,6 @@ var bodyParser = require("body-parser");
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
-var web3 = require('web3');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -21,17 +20,19 @@ var appconfig = JSON.parse(fs.readFileSync('appconfig.json'));
 
 // Web3
 var contractabi = JSON.parse(fs.readFileSync('contractabi.json'));
-console.log(web3);
-// var contract = new web3.eth.Contract(contractabi, appconfig['contract_address']);
+var Eth = require('web3-eth');
+var eth = new Eth(Eth.givenProvider || appconfig['eth_node']);
 
-// app.post('/registerstudent',function(req, res){
-//   var id = req.body.id;
-//   var fullname = req.body.fullname;
-//   contract.methods.registerStudent(id, fullname).send({from: appconfig['manager_address']}).on('error', function(error){
-//     res.end(error);
-//   });
-//   res.end("Done!");
-// });
+var contract = new eth.Contract(contractabi, appconfig['contract_address']);
+
+app.post('/registerstudent',function(req, res){
+  var id = req.body.id;
+  var fullname = req.body.fullname;
+  contract.methods.registerStudent(id, fullname).send({from: appconfig['manager_address']}).on('error', function(error){
+    res.end(error);
+  });
+  res.end("Done!");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
